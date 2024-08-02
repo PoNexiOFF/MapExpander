@@ -26,7 +26,3 @@ Map Expander is a program that lets you easily change the size of your maps on A
 ```
 
 5. Run the `Map Expander program`.
-
-## ❤️ » Credits
-
-* 🗃️ [Ponexi](https://github.com/PoNexiOFF)
