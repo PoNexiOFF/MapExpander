@@ -10,7 +10,7 @@ Map Expander is a program that lets you easily change the size of your maps on A
 
 ## ⚙ » Installation & Configuration
 
-1. Download the mod with the Steam Workshop or on here by clicking on `Code > Download ZIP`.
+1. Download the mod with the Steam Workshop or here by clicking on `Code > Download ZIP`.
 2. Type `%appdata%` in the taskbar. Then click on `Apoapsis Studios > Airport CEO > Saves` and copy. 
 
 ### If downloaded from github:
