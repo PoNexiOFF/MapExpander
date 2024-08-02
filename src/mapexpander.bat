@@ -83,17 +83,6 @@ if defined selectedFolder (
 )
 
 powershell -Command ^
-    "$jsonFile = '%jsonFile%';" ^
-    "$jsonFile = $jsonFile -replace '\\', '\\\\';" ^
-    "$json = Get-Content -Path $jsonFile -Raw | ConvertFrom-Json;" ^
-    "$original_x = $json.airportData.worldSize.x;" ^
-    "$original_y = $json.airportData.worldSize.y;" ^
-    "$outputFile = '%temp%\original_values.txt';" ^
-    "Add-Content -Path $outputFile -Value ('Original x: ' + $original_x);" ^
-    "Add-Content -Path $outputFile -Value ('Original y: ' + $original_y);" ^
-    "exit 0"
-
-rem Lire les valeurs originales depuis le fichier temporaire
 set "outputFile=%temp%\original_values.txt"
 
 for /f "tokens=1,* delims=:" %%i in ('type "%outputFile%"') do (
