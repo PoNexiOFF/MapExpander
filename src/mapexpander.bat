@@ -51,7 +51,7 @@ set "jsonFile=%chosenDir%\GameData.json"
 
 if defined selectedFolder (
     if exist "%chosenDir%" (
-        echo Directory : "%jsonFile%"
+        echo GameData.json Directory : "%jsonFile%"
         if exist "%jsonFile%" (
             echo GameData.json file found.
         ) else (
@@ -82,7 +82,7 @@ if defined selectedFolder (
     exit
 )
 
-powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('You are about to change the size of your backup map. This can lead to significant performance losses or crashes/bugs. We have determined that 1998 is the maximum size in x and y for constant bugs.', 'Warning', 'OK', [System.Windows.Forms.MessageBoxIcon]::Warning, [System.Windows.Forms.MessageBoxDefaultButton]::Button1, [System.Windows.Forms.MessageBoxOptions]::ServiceNotification)"
+powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('You are about to change the size of your backup map. This can lead to significant performance losses or crashes/bugs. We have determined that 1998 is the maximum size in x and y to avoid constant bugs.', 'Warning', 'OK', [System.Windows.Forms.MessageBoxIcon]::Warning, [System.Windows.Forms.MessageBoxDefaultButton]::Button1, [System.Windows.Forms.MessageBoxOptions]::ServiceNotification)"
 
 set /p "new_x=Enter the new value for x (must be over 1050) : "
 if %new_x% gtr 1998 (
