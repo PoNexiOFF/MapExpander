@@ -175,8 +175,8 @@ set timestamp=%ldt:~0,4%-%ldt:~4,2%-%ldt:~6,2%_%ldt:~8,2%-%ldt:~10,2%-%ldt:~12,2
 set logFile=%logsDir%\log_%timestamp%.txt
 (
     echo Modified Save Name : %selectedFolder%
-    echo Old x value : %original_x% > new x value : %new_x%
-    echo Old y value : %original_y% > new y value : %new_y%
+    echo Old x value : %original_x% - new x value : %new_x%
+    echo Old y value : %original_y% - new y value : %new_y%
 ) > "%logFile%"
 
 del "%tempFile%"
