@@ -82,7 +82,30 @@ if defined selectedFolder (
     exit
 )
 
-powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('You are about to change the size of your backup map. This can lead to significant performance losses or crashes/bugs. We have determined that 1998 is the maximum size in x and y to avoid constant bugs.', 'Warning', 'OK', [System.Windows.Forms.MessageBoxIcon]::Warning, [System.Windows.Forms.MessageBoxDefaultButton]::Button1, [System.Windows.Forms.MessageBoxOptions]::ServiceNotification)"
+powershell -Command ^
+    "$jsonFile = '%jsonFile%';" ^
+    "$jsonFile = $jsonFile -replace '\\', '\\\\';" ^
+    "$json = Get-Content -Path $jsonFile -Raw | ConvertFrom-Json;" ^
+    "$original_x = $json.airportData.worldSize.x;" ^
+    "$original_y = $json.airportData.worldSize.y;" ^
+    "$outputFile = '%temp%\original_values.txt';" ^
+    "Add-Content -Path $outputFile -Value ('Original x: ' + $original_x);" ^
+    "Add-Content -Path $outputFile -Value ('Original y: ' + $original_y);" ^
+    "exit 0"
+
+rem Lire les valeurs originales depuis le fichier temporaire
+set "outputFile=%temp%\original_values.txt"
+
+for /f "tokens=1,* delims=:" %%i in ('type "%outputFile%"') do (
+    if "%%i"=="Original x" set "original_x=%%j"
+    if "%%i"=="Original y" set "original_y=%%j"
+)
+
+del "%outputFile%"
+
+powershell -Command ^
+    "Add-Type -AssemblyName System.Windows.Forms;" ^
+    "[System.Windows.Forms.MessageBox]::Show('You are about to change the size of your backup map from X: %original_x% and Y: %original_y%. This can lead to significant performance losses or crashes/bugs. We have determined that 1998 is the maximum size in x and y to avoid constant bugs.', 'Warning', 'OK', [System.Windows.Forms.MessageBoxIcon]::Warning, [System.Windows.Forms.MessageBoxDefaultButton]::Button1, [System.Windows.Forms.MessageBoxOptions]::ServiceNotification)"
 
 set /p "new_x=Enter the new value for x (must be over 1050) : "
 if %new_x% gtr 1998 (
