@@ -169,8 +169,7 @@ set logsDir=%projectDir%\logs
 
 if not exist "%logsDir%" mkdir "%logsDir%"
 
-echo Log créé le %date% à %time% > "%logsDir%\log.txt"
-echo Fichier log.txt créé dans %logsDir%
+echo Log créé le %date% à %time% testestestest > "%logsDir%\log-%date%-%time%.txt"
 
 del "%tempFile%"
 endlocal

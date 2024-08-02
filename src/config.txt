@@ -1,1 +1,2 @@
-directory=SAVES DIRECTORY
+directory=C:\Users\lukad\AppData\Roaming\Apoapsis Studios\Airport CEO\Saves
+ndirectory=SAVES DIRECTORY
