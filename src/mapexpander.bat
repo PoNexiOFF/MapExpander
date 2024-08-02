@@ -105,9 +105,9 @@ del "%outputFile%"
 
 powershell -Command ^
     "Add-Type -AssemblyName System.Windows.Forms;" ^
-    "[System.Windows.Forms.MessageBox]::Show('You are about to change the size of your backup map from X: %original_x% and Y: %original_y%. This can lead to significant performance losses or crashes/bugs. We have determined that 1998 is the maximum size in x and y to avoid constant bugs.', 'Warning', 'OK', [System.Windows.Forms.MessageBoxIcon]::Warning, [System.Windows.Forms.MessageBoxDefaultButton]::Button1, [System.Windows.Forms.MessageBoxOptions]::ServiceNotification)"
+    "[System.Windows.Forms.MessageBox]::Show('You are about to change the size of your backup map from X:%original_x% and Y:%original_y%. This can lead to significant performance losses or crashes/bugs. We have determined that 1998 is the maximum size in x and y to avoid constant bugs.', 'Warning', 'OK', [System.Windows.Forms.MessageBoxIcon]::Warning, [System.Windows.Forms.MessageBoxDefaultButton]::Button1, [System.Windows.Forms.MessageBoxOptions]::ServiceNotification)"
 
-set /p "new_x=Enter the new value for x (must be over 1050) : "
+set /p "new_x=Enter the new value for x (current value:%original_x%) (must be over 1050) : "
 if %new_x% gtr 1998 (
     color 04
     echo Please enter a value less than 1998.
@@ -129,7 +129,7 @@ if %new_x% gtr 1998 (
 )
 
 :yValueCheck
-set /p "new_y=Enter the new value for y (must be over 700) : "
+set /p "new_y=Enter the new value for y (current value:%original_y%) (must be over 700) : "
 if %new_y% gtr 1998 (
     color 04
     echo Please enter a value less than 1998.
