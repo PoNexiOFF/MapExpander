@@ -13,10 +13,10 @@ Map Expander is a program that lets you easily change the size of your maps on A
 1. Download the mod with the Steam Workshop or on here by clicking on `Code > Download ZIP`.
 2. Type `%appdata%` in the taskbar. Then click on `Apoapsis Studios > Airport CEO > Saves` and copy. 
 
-# If downloaded from github:
+### If downloaded from github:
 3. Extract files from the downloaded zip file.
 
-# If downloaded from the Steam Workshop:
+### If downloaded from the Steam Workshop:
 3. Go to your Steam folder (which should be located in Program Files (x86)\Steam\ per default), then navigate to the \SteamApps\workshop\content\ folder.
 
 4. Go to the config file (`src > config.txt`) and enter the path to your saves folder.
