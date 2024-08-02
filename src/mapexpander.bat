@@ -163,6 +163,16 @@ color 2
 echo Modifications carried out successfully. If you have already started the game, please switch it off so that the change can be taken into account.
 color
 
+rem Création du fichier pour le dll dans le dossier de la save
+
+set meFile=%chosenDir%\MapExpanderData.txt
+(
+    echo value_x=%new_x%
+    echo value_y=%new_y%
+) > "%meFile%"
+
+rem Création du fichier log (pas sûr de garder ça)
+
 set scriptDir=%~dp0
 set projectDir=%scriptDir%\..
 set logsDir=%projectDir%\logs
