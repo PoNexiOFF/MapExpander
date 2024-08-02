@@ -6,7 +6,7 @@
 
 Map Expander is a program that lets you easily change the size of your maps on Airport CEO. `version 1.1`
 
-⚠️ Changing the map size can severely affect your game's performance. We recommend that users make sure they have a PC powerful enough to handle a larger map. We are not responsible for any problems you may encounter.
+⚠️ <b>Changing the map size can severely affect your game's performance. We recommend that users make sure they have a PC powerful enough to handle a larger map. We are not responsible for any problems you may encounter.</b>
 
 ---
 
