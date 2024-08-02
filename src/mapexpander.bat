@@ -163,6 +163,15 @@ color 2
 echo Modifications carried out successfully. If you have already started the game, please switch it off so that the change can be taken into account.
 color
 
+set scriptDir=%~dp0
+set projectDir=%scriptDir%\..
+set logsDir=%projectDir%\logs
+
+if not exist "%logsDir%" mkdir "%logsDir%"
+
+echo Log créé le %date% à %time% > "%logsDir%\log.txt"
+echo Fichier log.txt créé dans %logsDir%
+
 del "%tempFile%"
 endlocal
 pause
