@@ -40,6 +40,14 @@ for /f "tokens=1* delims= " %%A in (%tempFile%) do (
     echo !line!
 )
 
+rem Vérifier si la limite peut être dépassée
+
+rem if /i "%noLimitation%"=="true" (
+rem     echo La limite peut être dépassée
+rem ) else (
+rem     echo La limite ne peut pas être dépassée
+rem )
+
 set /p "choice=Enter the index number of the folder you wish to select (without brackets) : "
 
 set "selectedFolder="
@@ -174,23 +182,23 @@ set meFile=%chosenDir%\MapExpanderData.txt
 ) > "%meFile%"
 
 rem Création du fichier log (pas sûr de garder ça)
+rem set scriptDir=%~dp0
+rem set projectDir=%scriptDir%\..
+rem set logsDir=%projectDir%\logs
 
-set scriptDir=%~dp0
-set projectDir=%scriptDir%\..
-set logsDir=%projectDir%\logs
+rem if not exist "%logsDir%" mkdir "%logsDir%"
 
-if not exist "%logsDir%" mkdir "%logsDir%"
+rem for /f "tokens=2 delims==" %%I in ('"wmic os get localdatetime /value"') do set ldt=%%I
+rem set timestamp=%ldt:~0,4%-%ldt:~4,2%-%ldt:~6,2%_%ldt:~8,2%-%ldt:~10,2%-%ldt:~12,2%
 
-for /f "tokens=2 delims==" %%I in ('"wmic os get localdatetime /value"') do set ldt=%%I
-set timestamp=%ldt:~0,4%-%ldt:~4,2%-%ldt:~6,2%_%ldt:~8,2%-%ldt:~10,2%-%ldt:~12,2%
-
-set logFile=%logsDir%\log_%timestamp%.txt
-(
-    echo Modified Save Name : %selectedFolder%
-    echo Old x value : %original_x% - new x value : %new_x%
-    echo Old y value : %original_y% - new y value : %new_y%
-) > "%logFile%"
+rem set logFile=%logsDir%\log_%timestamp%.txt
+rem (
+rem     echo Modified Save Name : %selectedFolder%
+rem     echo Old x value : %original_x% - new x value : %new_x%
+rem     echo Old y value : %original_y% - new y value : %new_y%
+rem ) > "%logFile%"
 
 del "%tempFile%"
 endlocal
 pause
+ 
