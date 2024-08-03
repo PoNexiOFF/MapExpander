@@ -1,3 +1,0 @@
-Modified Save Name : MOD
-Old x value :  1998 - new x value : 1998
-Old y value :  1998 - new y value : 1998
