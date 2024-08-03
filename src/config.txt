@@ -1,1 +1,2 @@
-directory=SAVES DIRECTORY
+directory=SAVES PATH
+noLimitation=false

@@ -8,10 +8,11 @@ for /f "tokens=1,* delims==" %%a in (%configFile%) do (
     set "value=%%b"
     
     if "!key!"=="directory" set "directory=!value!"
+    if "!key!"=="noLimitation" set "noLimitation=!value!"
 )
 
 if exist "%directory%" (
-    echo The directory exists.
+    goto continue1
 ) else (
     color 04
     echo The directory does not exist. Please modify the directory you entered in config.txt by following the README instructions.
@@ -20,6 +21,7 @@ if exist "%directory%" (
     exit
 )
 
+:continue1
 echo Saves Directory : "%directory%"
 
 set /a index=0
@@ -50,6 +52,8 @@ set "chosenDir=%directory%\%selectedFolder%"
 set "jsonFile=%chosenDir%\GameData.json"
 
 if defined selectedFolder (
+    echo Selected folder : "%selectedFolder%"
+    echo Full path to chosen directory : "%chosenDir%"
     if exist "%chosenDir%" (
         echo GameData.json Directory : "%jsonFile%"
         if exist "%jsonFile%" (
@@ -83,6 +87,15 @@ if defined selectedFolder (
 )
 
 powershell -Command ^
+    "$jsonFile = '%jsonFile%';" ^
+    "$jsonFile = $jsonFile -replace '\\', '\\\\';" ^
+    "$json = Get-Content -Path $jsonFile -Raw | ConvertFrom-Json;" ^
+    "$original_x = $json.airportData.worldSize.x;" ^
+    "$original_y = $json.airportData.worldSize.y;" ^
+    "$outputFile = '%temp%\original_values.txt';" ^
+    "Add-Content -Path $outputFile -Value ('Original x: ' + $original_x);" ^
+    "Add-Content -Path $outputFile -Value ('Original y: ' + $original_y);" ^
+    "exit 0"
 set "outputFile=%temp%\original_values.txt"
 
 for /f "tokens=1,* delims=:" %%i in ('type "%outputFile%"') do (
